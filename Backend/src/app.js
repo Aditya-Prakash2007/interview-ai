@@ -1,22 +1,25 @@
-const express = require("express")
-const cookieParser = require("cookie-parser")
-const cors = require("cors")
-const app = express()
-
+const express = require("express");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-app.use(cors({
+const app = express();
+
+const corsOptions = {
   origin: "https://interview-ai-two-teal.vercel.app",
   credentials: true
-}));
+};
 
-app.options("*", cors());
-app.use(express.json())
-app.use(cookieParser())
+app.use(cors(corsOptions));
 
-const authRouter = require("./routes/auth.routes")
-const interviewRouter = require("./routes/interview.routes")
+app.options("*", cors(corsOptions));
 
-app.use("/api/auth", authRouter)
-app.use("/api/interview", interviewRouter)
-module.exports = app
+app.use(express.json());
+app.use(cookieParser());
+
+const authRouter = require("./routes/auth.routes");
+const interviewRouter = require("./routes/interview.routes");
+
+app.use("/api/auth", authRouter);
+app.use("/api/interview", interviewRouter);
+
+module.exports = app;
