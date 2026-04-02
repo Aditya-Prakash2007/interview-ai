@@ -4,7 +4,11 @@ const cors = require("cors")
 const app = express()
 
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:3001"],
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3001",
+    "https://interview-ai-two-teal.vercel.app"
+  ],
   credentials: true
 }))
 app.use(express.json())
