@@ -3,14 +3,14 @@ const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const app = express()
 
+const cors = require("cors");
+
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "http://localhost:3001",
-    "https://interview-ai-two-teal.vercel.app"
-  ],
+  origin: "https://interview-ai-two-teal.vercel.app",
   credentials: true
-}))
+}));
+
+app.options("*", cors());
 app.use(express.json())
 app.use(cookieParser())
 
