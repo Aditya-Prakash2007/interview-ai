@@ -1,0 +1,275 @@
+// ── Navbar Styles ────────────────────────────────────────────────────────────
+
+$bg-navbar:      #0a0e14;
+$bg-dropdown:    #161b22;
+$text-primary:   #e6edf3;
+$text-muted:     #7d8590;
+$accent:         #ff2d78;
+$accent-hover:   #ff6b9d;
+$border-color:   #2a3348;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(135deg, $bg-navbar 0%, #0d1117 100%);
+  border-bottom: 1px solid $border-color;
+  backdrop-filter: blur(10px);
+  background-color: rgba(10, 14, 20, 0.95);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      padding: 0.75rem 1rem;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, $accent 0%, $accent-hover 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: -0.5px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    .logo-icon {
+      font-size: 1.8rem;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  &__theme-btn {
+    background: none;
+    border: none;
+    color: $text-primary;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: rgba(255, 45, 120, 0.1);
+      color: $accent;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__profile {
+    position: relative;
+  }
+
+  &__profile-btn {
+    background: none;
+    border: 1px solid $border-color;
+    color: $text-primary;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 0.9rem;
+
+    &:hover {
+      border-color: $accent;
+      background-color: rgba(255, 45, 120, 0.05);
+    }
+
+    @media (max-width: 640px) {
+      padding: 0.5rem;
+      border-radius: 50%;
+
+      .profile-name,
+      .profile-chevron {
+        display: none;
+      }
+    }
+  }
+}
+
+// ── Profile Avatar ────────────────────────────────────────────────────────────
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $accent 0%, $accent-hover 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 45, 120, 0.3);
+}
+
+.profile-name {
+  font-weight: 500;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+  color: $text-muted;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+// ── Dropdown Menu ─────────────────────────────────────────────────────────────
+.navbar__dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: $bg-dropdown;
+  border: 1px solid $border-color;
+  border-radius: 0.75rem;
+  min-width: 260px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.2s ease;
+
+  @media (max-width: 640px) {
+    right: -0.5rem;
+    min-width: 220px;
+  }
+}
+
+.dropdown__user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.dropdown__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $accent 0%, $accent-hover 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.dropdown__username {
+  margin: 0;
+  font-weight: 600;
+  color: $text-primary;
+  font-size: 0.95rem;
+}
+
+.dropdown__email {
+  margin: 0.25rem 0 0 0;
+  color: $text-muted;
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.dropdown__divider {
+  margin: 0.5rem 0;
+  border: none;
+  border-top: 1px solid $border-color;
+}
+
+.dropdown__logout {
+  width: 100%;
+  background: none;
+  border: none;
+  color: $text-primary;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+
+  &:hover {
+    background-color: rgba(255, 45, 120, 0.1);
+    color: $accent;
+
+    svg {
+      transform: translate(2px, 0);
+    }
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+}
+
+// ── Animations ────────────────────────────────────────────────────────────────
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
