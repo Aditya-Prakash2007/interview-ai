@@ -6,7 +6,19 @@
     box-sizing: border-box;
 }
 
-html,
+html {
+    font-size: 16px;
+    @media (max-width: 1024px) {
+        font-size: 15px;
+    }
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
+    @media (max-width: 480px) {
+        font-size: 13px;
+    }
+}
+
 body,
 #root {
     width: 100%;
@@ -17,4 +29,18 @@ body,
 
 .highlight{
     color: #d20d3b;
+}
+
+/* Responsive Utility Classes */
+@media (max-width: 1024px) {
+    body, html {
+        overflow-x: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    body, html {
+        overflow-x: hidden;
+        font-size: 14px;
+    }
 }

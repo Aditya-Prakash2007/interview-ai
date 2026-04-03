@@ -13,10 +13,19 @@ main {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, $bg-dark 0%, #0a0e14 100%);
-    padding: 2rem;
+    padding: 1rem;
+
+    @media (max-width: 768px) {
+        padding: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+        padding: 1rem;
+    }
 
     .form-container {
-        min-width: 350px;
+        width: 100%;
+        min-width: unset;
         max-width: 420px;
         display: flex;
         flex-direction: column;
@@ -28,6 +37,15 @@ main {
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 45, 120, 0.1);
         animation: slideInUp 0.5s ease;
 
+        @media (max-width: 768px) {
+            padding: 2rem;
+        }
+
+        @media (max-width: 480px) {
+            padding: 1.5rem;
+            gap: 1.25rem;
+        }
+
         h1 {
             margin: 0;
             font-size: 1.75rem;
@@ -37,6 +55,10 @@ main {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+
+            @media (max-width: 480px) {
+                font-size: 1.5rem;
+            }
         }
     }
 
@@ -136,6 +158,12 @@ main {
         border: none;
         font-family: inherit;
         font-size: 0.95rem;
+        width: 100%;
+
+        @media (max-width: 480px) {
+            font-size: 0.9rem;
+            padding: 0.75rem 1.25rem !important;
+        }
 
         &.primary-button {
             background: linear-gradient(135deg, $accent 0%, #ff6b9d 100%);
@@ -279,9 +307,16 @@ main {
     padding: 2rem;
     max-width: 400px;
     width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     animation: slideInUp 0.3s ease;
     position: relative;
+
+    @media (max-width: 480px) {
+        padding: 1.5rem;
+        width: 95%;
+    }
 
     h2 {
         margin: 0 0 1.5rem 0;
